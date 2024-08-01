@@ -163,5 +163,13 @@ return [
      */
     'language_switcher_middlewares' => [
         'web'
-    ]
+    ],
+
+    /*
+     |--------------------------------------------------------------------------
+     |
+     | Translation Resource
+     |
+     */
+    'translation_resource' => \TomatoPHP\FilamentTranslations\Resources\TranslationResource::class,
 ];

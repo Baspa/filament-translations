@@ -5,18 +5,19 @@
 1. [Filament translations](#filament-translations)
 2. [Screenshots](#screenshots)
 3. [Installation](#installation)
-    - [Allow ChatGPT Auto Translations](#allow-chatgpt-auto-translations)
-    - [Allow Google Translate Auto Translations](#allow-google-translate-auto-translations)
-    - [Allow Create Button to Create New Language](#allow-create-button-to-create-new-language)
-    - [Allow Clear All Translations Button](#allow-clear-all-translations-button)
-    - [Publish Resource](#publish-resource)
-    - [Publish Assets](#publish-assets)
+   - [Allow ChatGPT Auto Translations](#allow-chatgpt-auto-translations)
+   - [Allow Google Translate Auto Translations](#allow-google-translate-auto-translations)
+   - [Allow Create Button to Create New Language](#allow-create-button-to-create-new-language)
+   - [Allow Clear All Translations Button](#allow-clear-all-translations-button)
+   - [Publish Resource](#publish-resource)
+   - [Publish Assets](#publish-assets)
 4. [Use Language Switcher](#use-language-switcher)
 5. [Usage](#usage)
-    - [Scan Using Command Line](#scan-using-command-line)
-    - [Change Scan to work on Queue](#change-scan-to-work-on-queue)
-    - [Custom Import Command](#custom-import-command)
-    - [Show or hide buttons in the UI](#show-or-hide-buttons-in-the-ui)
+   - [Scan Using Command Line](#scan-using-command-line)
+   - [Change Scan to work on Queue](#change-scan-to-work-on-queue)
+   - [Custom Import Command](#custom-import-command)
+   - [Show or hide buttons in the UI](#show-or-hide-buttons-in-the-ui)
+   - [Custom Resource](#custom-resource)
 6. [Other Filament Packages](#other-filament-packages)
 7. [Support](#support)
 8. [Docs](#docs)
@@ -54,7 +55,6 @@ Finally reigster the plugin on `/app/Providers/Filament/AdminPanelProvider.php`
 $panel->plugin(\TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin::make())
 ```
 
-
 ### Allow ChatGPT Auto Translations
 
 If you want to use ChatGPT to auto-translate your languages, you need to install `OpenAI` package by running:
@@ -75,7 +75,6 @@ allow the feature on your panel provider by adding the following:
 ```php
 $panel->plugin(\TomatoPHP\FilamentTranslations\FilamentTranslationsPlugin::make()->allowGPTScan())
 ```
-
 
 ### Allow Google Translate Auto Translations
 
@@ -161,14 +160,18 @@ You can use the language switcher in your panel by using the following plugin:
 $panel->plugin(\TomatoPHP\FilamentTranslations\FilamentTranslationsSwitcherPlugin::make())
 ```
 
+<<<<<<< HEAD
 **NOTE** your auth user table must have `lang` filed on the table to make this switch working fine.
+
+=======
+
+> > > > > > > dc6c855 (Allow users to customize the translation resource)
 
 ## Usage
 
 ### Scan Using Command Line
 
 You can scan your project to get all the languages tags and save them to the database
-
 
 ```bash
 php artisan filament-translations:import
@@ -228,6 +231,16 @@ You can show or hide the buttons in the UI by changing the config file. By defau
     'show_scan_button' => false ,
 ```
 
+### Custom Resource
+
+You can create your own resource to show the translations in the UI, add your custom resource class to the config file like this:
+
+```php
+    'translation_resource' => CustomResource::class,
+```
+
+This is especially useful when you want to have complete control over the UI but still want to use the translations package. Think about implementing a check on user roles when using `shouldRegisterNavigation` in your custom resource.
+
 ## Other Filament Packages
 
 - [Filament Users Resource](https://www.github.com/tomatophp/filament-users)
@@ -245,7 +258,6 @@ You can show or hide the buttons in the UI by changing the config file. By defau
 - [Filament Types Manager](https://www.github.com/tomatophp/filament-types)
 - [Filament Icons Picker](https://www.github.com/tomatophp/filament-icons)
 - [Filament Helpers Classes](https://www.github.com/tomatophp/filament-helpers)
-
 
 ## Support
 
